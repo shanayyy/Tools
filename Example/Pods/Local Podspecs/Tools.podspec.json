@@ -1,0 +1,22 @@
+{
+  "name": "Tools",
+  "version": "0.1.0",
+  "summary": "A short description of Tools.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/shanayyy/Tools",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "shanayyy": "shanayyy@live.com"
+  },
+  "source": {
+    "git": "https://github.com/shanayyy/Tools.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Tools/Classes/**/*"
+}
