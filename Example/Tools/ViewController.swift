@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Tools
 
 class ViewController: UIViewController {
-
+    var array = SynchronizedArray<Int>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        DispatchQueue.concurrentPerform(iterations: 100) { index in
+            let last = array.last ?? 0
+            array.append(last + 1)
+        }
     }
 
     override func didReceiveMemoryWarning() {
