@@ -2,6 +2,7 @@ import XCTest
 import Tools
 
 class Tests: XCTestCase {
+    var store = ThreadSafeStore(independentAccess: false)
     
     override func setUp() {
         super.setUp()
@@ -15,7 +16,14 @@ class Tests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        DispatchQueue.concurrentPerform(iterations: 10) { (idx) in
+            
+            self.store.setItem((self.store.getItem(forKey: "key1") ?? 0) + 1, forKey: "key1")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let i: Int? = self.store.getItem(forKey: "key1")
+            XCTAssert(i == 10, "\(i)")
+        }
     }
     
     func testPerformanceExample() {
